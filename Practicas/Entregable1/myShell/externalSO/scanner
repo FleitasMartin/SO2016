@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "Mandame al menos un host..."
+else
+    for host; #"$@" es la lista por defecto a iterar en bash.
+    do
+        `nc -w 5 $host 80 2> /dev/null `
+        if [ $? -eq 0 ]; then
+            echo $host
+        fi
+    done
+fi
